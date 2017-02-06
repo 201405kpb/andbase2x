@@ -235,6 +235,8 @@ public class AbPullToRefreshView extends LinearLayout {
 			} else if (mPullState == PULL_UP_STATE) {
 				// 执行上拉
 				footerPrepareToRefresh(deltaY);
+				//开始刷新
+				footerLoading();
 			}
 			mLastMotionY = y;
 			break;
@@ -251,14 +253,14 @@ public class AbPullToRefreshView extends LinearLayout {
 					setHeaderTopMargin(-mHeaderViewHeight);
 				}
 			} else if (mPullState == PULL_UP_STATE) {
-				//控制在什么时候加载更多
+				/*//控制在什么时候加载更多
 				if (Math.abs(topMargin) >= mHeaderViewHeight + mFooterViewHeight) {
 					// 开始执行footer 刷新
 					footerLoading();
 				} else {
 					// 还没有执行刷新，重新隐藏
 					setHeaderTopMargin(-mHeaderViewHeight);
-				}
+				}*/
 			}
 			break;
 			

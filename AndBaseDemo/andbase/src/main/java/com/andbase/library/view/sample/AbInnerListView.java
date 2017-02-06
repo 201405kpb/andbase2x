@@ -17,7 +17,7 @@ public class AbInnerListView extends ListView {
 
 	/** The parent scroll view. */
 	private ScrollView parentScrollView;
-	
+
 	/** The max height. */
 	private int maxHeight;
 
@@ -75,7 +75,7 @@ public class AbInnerListView extends ListView {
 		return super.onInterceptTouchEvent(ev);
 	}
 
-	private void setParentScrollAble(boolean flag) {
+	public void setParentScrollAble(boolean flag) {
 		parentScrollView.requestDisallowInterceptTouchEvent(!flag);
 	}
 

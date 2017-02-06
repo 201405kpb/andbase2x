@@ -4,8 +4,10 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
-import android.widget.ScrollView;
+import android.view.View;
+import android.widget.ListView;
 
 import com.andbase.library.util.AbLogUtil;
 import com.andbase.library.view.listener.AbOnScrollListener;
@@ -13,28 +15,20 @@ import com.andbase.library.view.listener.AbOnScrollListener;
 /**
  * Copyright amsoft.cn
  * Author 还如一梦中
- * Date 2016/6/20 13:17
+ * Date 2016/6/14 17:54
  * Email 396196516@qq.com
- * Info ScrollView支持实时滚动监听
+ * Info 有滚动距离返回的ListView
  */
-public class AbScrollView extends ScrollView {
+public class AbScrollListView extends ListView {
 
     private AbOnScrollListener onScrollListener;
-    /**
-     * 手指离开ScrollView，ScrollView还在继续滑动，我们用来保存Y的距离，然后做比较
-     */
+
     private int lastScrollY;
 
-    public AbScrollView(Context context) {
-        this(context, null);
-    }
+    private int headerHeight = 0;
 
-    public AbScrollView(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public AbScrollView(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
+    public AbScrollListView(Context context, AttributeSet attrs) {
+        super(context, attrs);
     }
 
     /**
@@ -52,7 +46,7 @@ public class AbScrollView extends ScrollView {
     private Handler handler = new Handler() {
 
         public void handleMessage(Message msg) {
-            int scrollY = getScrollY();
+            int scrollY = getListScrollY();
             AbLogUtil.e("scrollY","scrollY:"+scrollY);
             if(scrollY < 0){
                 scrollY = 0;
@@ -65,7 +59,7 @@ public class AbScrollView extends ScrollView {
 
                     lastScrollY = scrollY;
                     //惯性问题
-                    handler.sendMessageDelayed(handler.obtainMessage(1), 5);
+                    handler.sendMessageDelayed(handler.obtainMessage(1), 20);
 
                 }else{
                     lastScrollY = scrollY;
@@ -85,18 +79,12 @@ public class AbScrollView extends ScrollView {
 
     };
 
-    /**
-     * 重写onTouchEvent， 当用户的手在ScrollView上面的时候，
-     * 直接将ScrollView滑动的Y方向距离回调给onScroll方法中，当用户抬起手的时候，
-     * ScrollView可能还在滑动，所以当用户抬起手我们隔5毫秒给handler发送消息，在handler处理
-     * ScrollView滑动的距离
-     */
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
 
         switch(ev.getAction()){
             case MotionEvent.ACTION_DOWN:
-                lastScrollY = this.getScrollY();
+                lastScrollY = getListScrollY();
                 break;
             case MotionEvent.ACTION_MOVE:
                 handler.sendMessage(handler.obtainMessage(1));
@@ -108,7 +96,29 @@ public class AbScrollView extends ScrollView {
         return super.onTouchEvent(ev);
     }
 
-    public int getLastScrollY() {
-        return lastScrollY;
+    public int getListScrollY() {
+        View c = getChildAt(0);
+        if (c == null) {
+            return 0;
+        }
+        int firstVisiblePosition = getFirstVisiblePosition();
+
+        int top = c.getTop();
+        Log.e("TAG",firstVisiblePosition + "," + top);
+        int newScrollY = -top + firstVisiblePosition * c.getHeight();
+        if(headerHeight > 0 && firstVisiblePosition > 0){
+            return newScrollY + headerHeight;
+        }else{
+            return newScrollY;
+        }
+
+    }
+
+    public int getHeaderHeight() {
+        return headerHeight;
+    }
+
+    public void setHeaderHeight(int headerHeight) {
+        this.headerHeight = headerHeight;
     }
 }

@@ -22,5 +22,6 @@
     <string name="title_drag_grid_view">拖拽GridView</string>
     <string name="title_pull_to_refresh">下拉刷新</string>
     <string name="title_clock">漂亮时钟</string>
+    <string name="title_float_tab">浮动tab</string>
 
 </resources>

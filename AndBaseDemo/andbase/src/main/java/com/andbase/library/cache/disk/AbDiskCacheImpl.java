@@ -449,8 +449,8 @@ public class AbDiskCacheImpl implements AbDiskCache {
         try {
             URL imageURL = new URL(url);
             con = imageURL.openConnection();
-            con.setConnectTimeout(AbAppConfig.DEFAULT_SOCKET_TIMEOUT);
-            con.setReadTimeout(AbAppConfig.DEFAULT_SOCKET_TIMEOUT);
+            con.setConnectTimeout(AbAppConfig.DEFAULT_CONNECT_TIMEOUT);
+            con.setReadTimeout(AbAppConfig.DEFAULT_READ_TIMEOUT);
             con.setDoInput(true);
             con.setRequestProperty("Cookie", "JSESSIONID="+sessionId);
             con.connect();

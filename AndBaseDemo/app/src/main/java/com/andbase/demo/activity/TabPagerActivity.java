@@ -37,7 +37,7 @@ public class TabPagerActivity extends AbBaseActivity {
         AbTabPagerView tabPagerView = (AbTabPagerView)findViewById(R.id.tabPagerView);
 
         //TabLayout.MODE_FIXED,TabLayout.MODE_SCROLLABLE
-        tabPagerView.setTabMode(TabLayout.MODE_SCROLLABLE);
+        tabPagerView.setTabMode(TabLayout.MODE_FIXED);
         //缓存数量
         tabPagerView.getViewPager().setOffscreenPageLimit(1);
 

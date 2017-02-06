@@ -157,6 +157,12 @@
             android:label="@string/title_clock">
         </activity>
 
+        <activity
+            android:name=".activity.FloatTabActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/title_float_tab">
+        </activity>
+
         <!-- 桌面时钟插件 -->
         <receiver android:name=".desktop.ClockWidget" >
             <meta-data

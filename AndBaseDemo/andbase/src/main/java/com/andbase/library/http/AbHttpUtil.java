@@ -366,8 +366,8 @@ public class AbHttpUtil {
                     if(!AbStrUtil.isEmpty(sessionId)){
                         httpURLConnection.setRequestProperty("Cookie", "JSESSIONID="+sessionId);
                     }
-                    httpURLConnection.setConnectTimeout(AbAppConfig.DEFAULT_SOCKET_TIMEOUT);
-                    httpURLConnection.setReadTimeout(AbAppConfig.DEFAULT_SOCKET_TIMEOUT);
+                    httpURLConnection.setConnectTimeout(AbAppConfig.DEFAULT_CONNECT_TIMEOUT);
+                    httpURLConnection.setReadTimeout(AbAppConfig.DEFAULT_READ_TIMEOUT);
                     httpURLConnection.setDoOutput(true);
                     StringBody body = null;
                     if(params!=null){
@@ -447,8 +447,8 @@ public class AbHttpUtil {
                 httpURLConnection.setRequestProperty("Cookie", "JSESSIONID="+sessionId);
             }
 
-            httpURLConnection.setConnectTimeout(AbAppConfig.DEFAULT_SOCKET_TIMEOUT);
-            httpURLConnection.setReadTimeout(AbAppConfig.DEFAULT_SOCKET_TIMEOUT);
+            httpURLConnection.setConnectTimeout(AbAppConfig.DEFAULT_CONNECT_TIMEOUT);
+            httpURLConnection.setReadTimeout(AbAppConfig.DEFAULT_READ_TIMEOUT);
             httpURLConnection.setDoOutput(true);
 
             httpURLConnection.setRequestProperty("connection", "keep-alive");
@@ -555,8 +555,8 @@ public class AbHttpUtil {
             if(!AbStrUtil.isEmpty(sessionId)){
                 httpURLConnection.setRequestProperty("Cookie", "JSESSIONID="+sessionId);
             }
-            httpURLConnection.setConnectTimeout(AbAppConfig.DEFAULT_SOCKET_TIMEOUT);
-            httpURLConnection.setReadTimeout(AbAppConfig.DEFAULT_SOCKET_TIMEOUT);
+            httpURLConnection.setConnectTimeout(AbAppConfig.DEFAULT_CONNECT_TIMEOUT);
+            httpURLConnection.setReadTimeout(AbAppConfig.DEFAULT_READ_TIMEOUT);
             httpURLConnection.setDoOutput(true);
 
             httpURLConnection.setRequestProperty("connection", "keep-alive");

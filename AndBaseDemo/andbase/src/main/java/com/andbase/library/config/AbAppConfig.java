@@ -37,7 +37,7 @@ public class AbAppConfig {
 	public static  String DB_DIR = "db";
 	
 	/** 默认磁盘缓存超时时间1小时设置，毫秒. */
-	public static long DISK_CACHE_EXPIRES_TIME = 3600*1000;
+	public static long DISK_CACHE_EXPIRES_TIME = 48*3600*1000;
 	
 	/** 内存缓存大小  单位10M. */
 	public static int MAX_CACHE_SIZE_INBYTES = 10*1024*1024;
@@ -48,8 +48,11 @@ public class AbAppConfig {
     /** 最大连接数. */
     public static int DEFAULT_MAX_CONNECTIONS = 10;
 
-    /** 超时时间. */
-    public static int DEFAULT_SOCKET_TIMEOUT = 5000;
+    /** 连接超时时间. */
+    public static int DEFAULT_CONNECT_TIMEOUT = 5000;
+
+	/** 数据传输超时时间. */
+	public static int DEFAULT_READ_TIMEOUT = 20000;
 
     /** 重试次数. */
     public static int DEFAULT_MAX_RETRIES = 1;

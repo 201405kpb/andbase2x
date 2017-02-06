@@ -6,7 +6,6 @@ import android.widget.RelativeLayout;
 
 import com.andbase.demo.R;
 import com.andbase.library.app.base.AbBaseActivity;
-import com.andbase.library.util.AbLogUtil;
 import com.andbase.library.view.listener.AbOnScrollListener;
 import com.andbase.library.view.sample.AbScrollView;
 
@@ -38,25 +37,27 @@ public class FloatTitleActivity extends AbBaseActivity {
 
             @Override
             public void onScrollY(int scrollY) {
-                //惯性滑动还未处理好
-                AbLogUtil.e("scrollY","scrollY:"+scrollY);
-                //恢复位置
-                if(scrollY < 30){
+
+
+                if(scrollY == 0){
+                    //恢复位置
                     layoutParams.topMargin = topMargin;
                     top_bar.getBackground().setAlpha(0);
                     searchLayout.setBackgroundResource(R.drawable.bg_rect_white_translucent);
+
+                }else if(scrollY > topMargin){
                     //到达顶部
-                }else if(scrollY >= 30){
                     layoutParams.topMargin = 0;
                     //保留点透明  最大255
-                    top_bar.getBackground().setAlpha(200);
+                    top_bar.getBackground().setAlpha(255);
                     searchLayout.setBackgroundResource(R.drawable.bg_rect_white);
-                    searchLayout.getBackground().setAlpha(200);
+                    searchLayout.getBackground().setAlpha(255);
 
-                    //中间区域
+
                 }else{
+                    //中间区域
                     layoutParams.topMargin = topMargin-scrollY;
-                    int alpha =(int) (layoutParams.topMargin*(200/20));
+                    int alpha = 255 - (int) (layoutParams.topMargin * (255/topMargin));
                     top_bar.getBackground().setAlpha(alpha);
 
                 }

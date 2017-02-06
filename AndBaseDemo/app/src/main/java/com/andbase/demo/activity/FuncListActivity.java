@@ -38,6 +38,7 @@ public class FuncListActivity extends AbBaseActivity {
             R.mipmap.ic_launcher,
             R.mipmap.ic_launcher,
             R.mipmap.ic_launcher,
+            R.mipmap.ic_launcher,
             R.mipmap.ic_launcher
 
     };
@@ -59,7 +60,8 @@ public class FuncListActivity extends AbBaseActivity {
             "拍照录像 + JS调用",
             "拖拽的GridView",
             "下拉刷新，加载更多",
-            "漂亮时钟"
+            "漂亮时钟",
+            "浮动Tab - title"
     };
 
     private String[] intros = new String[]{
@@ -80,7 +82,8 @@ public class FuncListActivity extends AbBaseActivity {
             "拍照录像 + JS调用",
             "拖拽的GridView",
             "下拉刷新,加载更多",
-            "漂亮时钟"
+            "漂亮时钟",
+            "浮动Tab - title"
 
     };
 
@@ -193,6 +196,10 @@ public class FuncListActivity extends AbBaseActivity {
                         break;
                     case 17:
                         intent = new Intent(FuncListActivity.this, AnalogClockActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 18:
+                        intent = new Intent(FuncListActivity.this, FloatTabActivity.class);
                         startActivity(intent);
                         break;
                     case 99:
