@@ -11,7 +11,7 @@
         android:layout_marginTop="@dimen/notification_height"
         android:background="@color/gray_bg">
 
-        <com.andbase.library.view.AbScrollView
+        <com.andbase.library.view.sample.AbScrollView
             android:id="@+id/index_scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -29,7 +29,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="15sp" />
             </RelativeLayout>
-        </com.andbase.library.view.AbScrollView>
+        </com.andbase.library.view.sample.AbScrollView>
 
         <LinearLayout
             android:id="@+id/top_bar"
